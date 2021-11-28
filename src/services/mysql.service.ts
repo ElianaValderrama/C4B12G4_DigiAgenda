@@ -23,8 +23,17 @@ const executeQuery = (query: string) => {
     return new Promise((resolve, reject) => {
         try{
             const connection = getConnection();
+            connection.query(query, (error, result) => {
+                if(error) {
+                    reject(error)
+                } else {
+                    resolve(result)
+                }
+            })
         }catch(error){
             reject(error);
         }
     })
 }
+
+export default executeQuery;
