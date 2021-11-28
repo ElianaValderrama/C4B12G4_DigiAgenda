@@ -7,7 +7,7 @@ const usuariosRoutes = (app) => {
     //obtiene todas los usuarios
     router.get('/obtenerUsuarios', obtenerUsuarios);
     //obtiene un solo usuario
-    router.get('/obtenerUsuarios/:id', obtenerUsuario);
+    router.get('/obtenerUsuario/:id', obtenerUsuario);
     router.post('/agregarUsuarios', agregarUsuarios);
     router.put('/actualizarUsuarios/:id', actualizarUsuarios);
     router.delete('/eliminarUsuarios/:id', eliminarUsuarios);

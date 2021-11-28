@@ -1,4 +1,7 @@
 import express from 'express';
+import agendasRoutes from './routes/agendas';
+import especialidadesRoutes from './routes/especialidades';
+import profesionalesRoutes from './routes/profesionales';
 import usuariosRoutes from './routes/usuarios';
 
 const app = express();
@@ -9,6 +12,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended:true}));
 
 usuariosRoutes(app);
+profesionalesRoutes(app);
+especialidadesRoutes(app);
+agendasRoutes(app);
 
 app.get('/prueba/:id', async(req, res, next) => {
     /*console.log(req.body)
