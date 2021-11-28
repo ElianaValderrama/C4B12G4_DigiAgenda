@@ -1,5 +1,11 @@
-const obtenerProfesionales = (req, res) => {
-    res.send('respuesta desde el controlador');
+import executeQuery from "../services/mysql.service";
+
+const obtenerProfesionales = async(req, res) => {
+    await executeQuery('SELECT * FROM profesionales').then((response) => {
+        res.json(response);
+    }).catch(error => {
+        res.status(500).send(error);
+    })
 }
 
 const obtenerProfesional = (req, res) => {
