@@ -3,9 +3,9 @@ import agendasRoutes from './routes/agendas';
 import especialidadesRoutes from './routes/especialidades';
 import profesionalesRoutes from './routes/profesionales';
 import usuariosRoutes from './routes/usuarios';
+import config from './config/config';
 
 const app = express();
-const port = 3000;
 
 //para imprimir el body como json
 app.use(express.json());
@@ -41,6 +41,6 @@ app.get('/prueba/:id', async(req, res, next) => {
     res.status(404).json({message: "Todo Ok"});
 });
 
-app.listen(port, () => {
-return console.log(`servidor corriendo en el puerto ${port}`);
+app.listen(config.PORT, () => {
+return console.log(`servidor corriendo en el puerto ${config.PORT}`);
 });

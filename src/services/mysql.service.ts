@@ -1,7 +1,30 @@
+import mysql from 'mysql';
+import config from '../config/config';
+
 const getConnection = () => {
-    console.log('agregar logica de conexion');
+    const connection = mysql.createConnection({
+        port: config.PORT,
+        database: config.DATABASE,
+        user: config.DB_USER,
+        password: config.DB_PASSWORD,
+        host: config.DB_HOST
+    })
+    connection.connect((error) => {
+        if(error){
+            throw error;
+        } else{
+            console.log('conexion exitosa');
+        }
+    })
+    return connection;
 }
 
 const executeQuery = (query: string) => {
-    console.log('agregar logica para ejecutar query');
+    return new Promise((resolve, reject) => {
+        try{
+            const connection = getConnection();
+        }catch(error){
+            reject(error);
+        }
+    })
 }
