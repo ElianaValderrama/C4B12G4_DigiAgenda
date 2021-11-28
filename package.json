@@ -23,6 +23,7 @@
   "homepage": "https://github.com/ElianaValderrama/C4B12G4_DigiAgenda#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "mysql": "^2.18.1",
     "typescript": "^4.5.2"
   },
   "devDependencies": {
