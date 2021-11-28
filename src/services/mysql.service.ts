@@ -1,9 +1,9 @@
-import mysql from 'mysql';
+import mysql from 'mysql2';
 import config from '../config/config';
 
 const getConnection = () => {
     const connection = mysql.createConnection({
-        port: config.PORT,
+        port: +config.DB_PORT,
         database: config.DATABASE,
         user: config.DB_USER,
         password: config.DB_PASSWORD,
@@ -19,7 +19,8 @@ const getConnection = () => {
     return connection;
 }
 
-const executeQuery = (query: string) => {
+const executeQuery = (query: string):Promise<any> => {
+    
     return new Promise((resolve, reject) => {
         try{
             const connection = getConnection();
