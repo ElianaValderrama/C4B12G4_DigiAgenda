@@ -1,32 +1,30 @@
 import { response } from "express";
 import executeQuery from "../services/mysql.service";
 
-const obtenerAgendas = async(req, res) => {
+const obtenerAgendas = async(req, res, next) => {
     await executeQuery('SELECT * FROM agendas').then((response) => {
         res.json(response);
     }).catch(error => {
-        res.status(500).send(error);
+        next(error);
     })
 }
 
-const obtenerAgenda = async(req, res) => {
+const obtenerAgenda = async(req, res, next) => {
     try{
         const response = await executeQuery(`SELECT * FROM agendas WHERE id_agendas = '${req.params.id}'`);
         res.send(response);
     }catch(error) {
-        console.log(error);
-        res.status(500).send(error);
+        next(error);
     }  
 }
 
-const agregarAgendas = async(req, res) => {
+const agregarAgendas = async(req, res, next) => {
     const {fecha_agendas,hora_desde,hora_hasta,id_especialidades,detalle,id_profesionales,id_usuarios} = req.body;
     try{
         const response = await executeQuery(`INSERT INTO agendas (fecha_agendas,hora_desde,hora_hasta,id_especialidades,detalle,id_profesionales,id_usuarios) VALUES ('${fecha_agendas}','${hora_desde}',${hora_hasta},'${id_especialidades}','${detalle}','${id_profesionales}','${id_usuarios}')`);
         res.status(201).json({ message: 'created', id: response.insertId});
     }catch(error) {
-        console.log(error);
-        res.status(500).send(error);
+        next(error);
     }
 }
 
@@ -38,12 +36,11 @@ const actualizarAgendas = (req, res) => {
     })
 }
 
-const eliminarAgendas = (req, res) => {
+const eliminarAgendas = (req, res, next) => {
     executeQuery(`DELETE FROM agendas WHERE id_agendas = '${req.params.id}'`).then((response) => {
         res.json({message: response.affectedRows > 0 ? 'deleted' : 'no existe registor con id: ${req.params.id}'});
     }).catch((error) => {
-        console.log(error);
-        response.status(500).send(error);
+        next(error);
     })
 }
 

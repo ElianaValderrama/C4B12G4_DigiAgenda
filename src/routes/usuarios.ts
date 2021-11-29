@@ -1,5 +1,6 @@
 import { Router } from "express"
 import { actualizarUsuarios, agregarUsuarios, eliminarUsuarios, obtenerUsuario, obtenerUsuarios } from "../controllers/usuariosControllers";
+import errorHandler from "../middleware/error";
 
 const usuariosRoutes = (app) => {
     const router = Router();
@@ -11,6 +12,8 @@ const usuariosRoutes = (app) => {
     router.post('/agregarUsuarios', agregarUsuarios);
     router.put('/actualizarUsuarios/:id', actualizarUsuarios);
     router.delete('/eliminarUsuarios/:id', eliminarUsuarios);
+
+    app.use(errorHandler);
 }
 
 export default usuariosRoutes;

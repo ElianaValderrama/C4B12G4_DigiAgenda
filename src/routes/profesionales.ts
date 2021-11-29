@@ -1,5 +1,6 @@
 import { Router } from "express"
 import { actualizarProfesionales, agregarProfesionales, eliminarProfesionales, obtenerProfesional, obtenerProfesionales } from "../controllers/profesionalesControllers";
+import errorHandler from "../middleware/error";
 
 
 const profesionalesRoutes = (app) => {
@@ -12,6 +13,8 @@ const profesionalesRoutes = (app) => {
     router.post('/agregarProfesionales', agregarProfesionales);
     router.put('/actualizarProfesionales/:id', actualizarProfesionales);
     router.delete('/eliminarProfesionales/:id', eliminarProfesionales);
+
+    app.use(errorHandler);
 }
 
 export default profesionalesRoutes;

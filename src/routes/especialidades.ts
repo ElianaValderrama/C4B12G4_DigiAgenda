@@ -1,5 +1,6 @@
 import { Router } from "express"
 import { actualizarEspecialidades, agregarEspecialidades, eliminarEspecialidades, obtenerEspecialidad, obtenerEspecialidades } from "../controllers/especialidadesControllers";
+import errorHandler from "../middleware/error";
 
 
 const especialidadesRoutes = (app) => {
@@ -12,6 +13,8 @@ const especialidadesRoutes = (app) => {
     router.post('/agregarEspecialidades', agregarEspecialidades);
     router.put('/actualizarEspecialidades/:id', actualizarEspecialidades);
     router.delete('/eliminarEspecialidades/:id', eliminarEspecialidades);
+
+    app.use(errorHandler);
 }
 
 export default especialidadesRoutes;

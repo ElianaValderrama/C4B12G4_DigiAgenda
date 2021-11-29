@@ -1,5 +1,6 @@
 import { Router } from "express"
 import { actualizarAgendas, agregarAgendas, eliminarAgendas, obtenerAgenda, obtenerAgendas } from "../controllers/agendasControllers";
+import errorHandler from "../middleware/error";
 
 
 const agendasRoutes = (app) => {
@@ -12,6 +13,8 @@ const agendasRoutes = (app) => {
     router.post('/agregarAgendas', agregarAgendas);
     router.put('/actualizarAgendas/:id', actualizarAgendas);
     router.delete('/eliminarAgendas/:id', eliminarAgendas);
+
+    app.use(errorHandler);
 }
 
 export default agendasRoutes;
