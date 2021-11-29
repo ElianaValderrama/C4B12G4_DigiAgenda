@@ -13,8 +13,6 @@ const agendasRoutes = (app) => {
     router.post('/agregarAgendas', agregarAgendas);
     router.put('/actualizarAgendas/:id', actualizarAgendas);
     router.delete('/eliminarAgendas/:id', eliminarAgendas);
-
-    app.use(errorHandler);
 }
 
 export default agendasRoutes;

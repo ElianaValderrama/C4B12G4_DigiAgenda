@@ -12,8 +12,6 @@ const usuariosRoutes = (app) => {
     router.post('/agregarUsuarios', agregarUsuarios);
     router.put('/actualizarUsuarios/:id', actualizarUsuarios);
     router.delete('/eliminarUsuarios/:id', eliminarUsuarios);
-
-    app.use(errorHandler);
 }
 
 export default usuariosRoutes;

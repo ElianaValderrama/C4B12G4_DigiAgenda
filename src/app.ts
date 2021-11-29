@@ -4,6 +4,7 @@ import especialidadesRoutes from './routes/especialidades';
 import profesionalesRoutes from './routes/profesionales';
 import usuariosRoutes from './routes/usuarios';
 import config from './config/config';
+import errorHandler from './middleware/error';
 
 const app = express();
 
@@ -15,6 +16,8 @@ usuariosRoutes(app);
 profesionalesRoutes(app);
 especialidadesRoutes(app);
 agendasRoutes(app);
+
+app.use(errorHandler);
 
 app.get('/prueba', async(req, res, next) => {
     const datos = {

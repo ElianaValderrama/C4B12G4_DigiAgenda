@@ -13,8 +13,6 @@ const especialidadesRoutes = (app) => {
     router.post('/agregarEspecialidades', agregarEspecialidades);
     router.put('/actualizarEspecialidades/:id', actualizarEspecialidades);
     router.delete('/eliminarEspecialidades/:id', eliminarEspecialidades);
-
-    app.use(errorHandler);
 }
 
 export default especialidadesRoutes;
