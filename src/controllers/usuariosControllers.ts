@@ -11,8 +11,13 @@ const obtenerUsuarios = async (req, res) => {
 }
 
 const obtenerUsuario = async(req, res) => {
+    const {id} = req.params;
     try{
-        const response = await executeQuery(`SELECT * FROM usuarios WHERE id_usuarios = '${req.params.id}'`);
+        const response = await executeQuery(`SELECT * FROM usuarios WHERE id_usuarios = '${id}'`);
+        const data = {
+            message: `${response.length} datos encontrados`,
+            data: response.length > 0 ? response : null
+        };
         res.send(response);
     }catch(error) {
         console.log(error);
