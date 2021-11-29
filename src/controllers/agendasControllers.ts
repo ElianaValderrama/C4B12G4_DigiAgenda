@@ -8,8 +8,14 @@ const obtenerAgendas = async(req, res) => {
     })
 }
 
-const obtenerAgenda = (req, res) => {
-    res.send('respuesta desde el controlador');
+const obtenerAgenda = async(req, res) => {
+    try{
+        const response = await executeQuery(`SELECT * FROM agendas WHERE id_agendas = '${req.params.id}'`);
+        res.send(response);
+    }catch(error) {
+        console.log(error);
+        res.status(500).send(error);
+    }  
 }
 
 const agregarAgendas = (req, res) => {

@@ -16,7 +16,15 @@ profesionalesRoutes(app);
 especialidadesRoutes(app);
 agendasRoutes(app);
 
-app.get('/prueba/:id', async(req, res, next) => {
+app.get('/prueba', async(req, res, next) => {
+    const datos = {
+        nombre: "Eliana",
+        apellido: "apellido",
+        genero: "femenino"
+    }
+    const myarray = ["perro","gato"]
+    const [primero, segundo] = myarray
+    const {apellido} = datos;
     /*console.log(req.body)
     //creacion promesa
     console.log('antes de la promesa')
@@ -38,7 +46,7 @@ app.get('/prueba/:id', async(req, res, next) => {
 
     console.log('despues de la promesa')*/
 
-    res.status(404).json({message: "Todo Ok"});
+    res.status(404).json({message: apellido});
 });
 
 app.listen(config.PORT, () => {

@@ -8,8 +8,14 @@ const obtenerEspecialidades = async(req, res) => {
     })
 }
 
-const obtenerEspecialidad = (req, res) => {
-    res.send('respuesta desde el controlador');
+const obtenerEspecialidad = async(req, res) => {
+    try{
+        const response = await executeQuery(`SELECT * FROM especialidades WHERE id_especialidades = '${req.params.id}'`);
+        res.send(response);
+    }catch(error) {
+        console.log(error);
+        res.status(500).send(error);
+    }  
 }
 
 const agregarEspecialidades = (req, res) => {
